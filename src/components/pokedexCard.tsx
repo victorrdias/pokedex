@@ -2,28 +2,26 @@ import { StarIcon } from "@chakra-ui/icons";
 import { Box, Flex, IconButton, Text } from "@chakra-ui/react";
 import { PokeAPI } from "pokeapi-types";
 import React, { useContext } from "react";
-import FavoriteContext from "../contexts/favoritesContext";
+import { FavoriteContext } from "../contexts/FavoriteContext";
+
 import { PokemonImage } from "./pokemonImage";
 
-const Pokemon: React.FC<{ pokemon: PokeAPI.Pokemon; isFavorite: boolean }> = ({
-  pokemon,
-  isFavorite,
-}) => {
-  const { addFavorite, deleteFavorite } = useContext(FavoriteContext);
+const PokedexCard: React.FC<{
+  pokemon: PokeAPI.Pokemon;
+  isFavorite: boolean;
+}> = ({ pokemon }) => {
+  const { favorites, setFavorites } = useContext(FavoriteContext);
 
-  console.log("isFavorite", isFavorite);
-
-  const toggleFavoriteHandler = (
-    isFavorite: boolean,
-    pokemon: PokeAPI.Pokemon
-  ) => {
-    if (isFavorite === false) {
-      addFavorite(pokemon);
-    } else {
-      deleteFavorite(pokemon);
-    }
+  const addPokemonToFavorite = (pokemon: PokeAPI.Pokemon) => {
+    setFavorites([...favorites, pokemon]);
   };
-  console.log("pokemon", isFavorite);
+
+  const removePokemonFromFavorite = () => {
+    setFavorites(favorites.filter((poke) => poke.name !== pokemon.name));
+  };
+
+  const isFavorite = favorites.some((poke) => poke.name === pokemon.name);
+
   return (
     <Box
       boxShadow=" rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;"
@@ -36,7 +34,11 @@ const Pokemon: React.FC<{ pokemon: PokeAPI.Pokemon; isFavorite: boolean }> = ({
       rounded="lg"
     >
       <IconButton
-        onClick={() => toggleFavoriteHandler(isFavorite, pokemon)}
+        onClick={() =>
+          isFavorite
+            ? removePokemonFromFavorite()
+            : addPokemonToFavorite(pokemon)
+        }
         aria-label="favorite pokemons"
         icon={<StarIcon />}
         color={isFavorite ? "yellow.200" : "black"}
@@ -68,7 +70,4 @@ const Pokemon: React.FC<{ pokemon: PokeAPI.Pokemon; isFavorite: boolean }> = ({
   );
 };
 
-export default Pokemon;
-
-// separar as funcoes de toggle delete/add
-// adicionar uma propriedade boolean no card do pokemon, para verificar se eh ou nao favorito. Dessa forma, o contexto eh desnecessario.
+export default PokedexCard;

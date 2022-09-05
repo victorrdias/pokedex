@@ -3,15 +3,13 @@ import { useNavigate } from "react-router-dom";
 import { StarIcon } from "@chakra-ui/icons";
 import { Flex, IconButton, Input } from "@chakra-ui/react";
 import { PokeAPI } from "pokeapi-types";
-import FavoriteContext from "../../contexts/favoritesContext";
+
 import { searchPokemon } from "../api";
 import PokemonModal from "./pokemonModal";
 
 const SearchBar = () => {
   const [search, setSearch] = useState("");
   const [pokemon, setPokemon] = useState<PokeAPI.Pokemon | null>(null);
-
-  useContext(FavoriteContext);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
