@@ -73,6 +73,9 @@ export const PokemonModal: React.FC<{ pokemon: PokeAPI.Pokemon }> = ({
               {pokemon.weight + " kg"}
               <Spacer />
               {pokemon.height + " Metros"}
+              <Spacer />
+              {"type: " +
+                pokemon.types.map((type) => type.type.name).join(", ")}
             </ModalFooter>
           </ModalContent>
         </Modal>
