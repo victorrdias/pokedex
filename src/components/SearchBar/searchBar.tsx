@@ -19,7 +19,6 @@ const SearchBar = () => {
     try {
       if (pokemon.length > 0) {
         const result: PokeAPI.Pokemon = await searchPokemon(pokemon);
-        console.log("result ", result);
         if (result !== undefined) setPokemon(result);
       }
     } catch (error) {

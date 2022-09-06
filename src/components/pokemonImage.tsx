@@ -2,7 +2,6 @@ import { Image } from "@chakra-ui/react";
 import React from "react";
 
 export const PokemonImage = ({ sprites, name, boxSize }) => {
-  console.log("sprites", sprites);
   return (
     <Image
       boxSize={boxSize}

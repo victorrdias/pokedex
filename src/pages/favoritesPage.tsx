@@ -24,9 +24,7 @@ const FavoritesPage = () => {
       const data = await getPokemonData(url);
       const pokemonData = data as PokeAPI.Pokemon;
       return pokemonData;
-    } catch (error) {
-      console.log("fetchPokemonsData error: ", error);
-    }
+    } catch (error) {}
   };
 
   const handleFetchData = async () => {
