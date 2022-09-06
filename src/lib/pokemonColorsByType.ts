@@ -1,5 +1,5 @@
 export const colors = {
-  fire: "linear-gradient(155deg, rgba(184,77,0,1) 0%, rgba(240,128,48,1) 100%)",
+  fire: "linear-gradient(155deg, rgba(240,113,2,1) 0%, rgba(255,184,121,1) 100%);", //"linear-gradient(155deg, rgba(184,77,0,1) 0%, rgba(240,128,48,1) 100%)",
   water:
     "linear-gradient(155deg, rgba(32,98,255,1) 0%, rgba(104,144,240,1) 100%)",
   grass:
@@ -27,7 +27,7 @@ export const colors = {
   steel:
     "linear-gradient(155deg, rgba(184,184,208,1) 0%, rgba(217,217,222,1) 100%)", //"#B8B8D0",
   dragon:
-    "linear-gradient(155deg, rgba(86,17,252,1) 0%, rgba(112,56,248,1) 100%)",
+    "linear-gradient(155deg, rgba(169,133,255,1) 0%, rgba(127,80,242,1) 100%)", //"linear-gradient(155deg, rgba(86,17,252,1) 0%, rgba(112,56,248,1) 100%)",
   fairy:
     "linear-gradient(155deg, rgba(198,90,245,1) 0%, rgba(227,163,255,1) 100%);",
 };

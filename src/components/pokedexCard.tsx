@@ -1,5 +1,5 @@
 import { StarIcon } from "@chakra-ui/icons";
-import { Flex, IconButton, Text, Image } from "@chakra-ui/react";
+import { Flex, IconButton, Text, Image, Tag } from "@chakra-ui/react";
 import { PokeAPI } from "pokeapi-types";
 import React, { useContext } from "react";
 import { FavoriteContext } from "../contexts/FavoriteContext";
@@ -29,6 +29,26 @@ const PokedexCard: React.FC<{
 
   const pokeColor = colors[firstPokeType];
 
+  const setTagTextColor = (type: string) => {
+    switch (type) {
+      case "rock":
+        return "#fff";
+
+      case "fighting":
+        return "#fff";
+      case "poison":
+        return "#fff";
+
+      case "ghost":
+        return "#fff";
+      case "dragon":
+        return "#fff";
+      case "flying":
+        return "#fff";
+      default:
+        return "black";
+    }
+  };
   return (
     <Flex
       direction="column"
@@ -36,11 +56,13 @@ const PokedexCard: React.FC<{
       borderRadius="4"
       boxSize="12rem"
       bg={pokeColor}
-      height="18rem"
+      height="max-content"
       rounded="lg"
       align="center"
       justify="center"
       zIndex={10}
+      pb="4"
+      gap="3"
     >
       <Image
         src="./assets/pokeball.png"
@@ -68,25 +90,34 @@ const PokedexCard: React.FC<{
         }}
       />
 
-      <Flex>
-        <PokemonImage
-          boxSize="12rem"
-          name={pokemon.name}
-          sprites={pokemon.sprites}
-        />
-      </Flex>
+      <PokemonImage
+        boxSize="12rem"
+        name={pokemon.name}
+        sprites={pokemon.sprites}
+      />
 
-      <Flex direction="row" gap="2" height="max-content" padding="1">
-        <Text textAlign="center" fontWeight="extrabold" color="#2b1906">
+      <Flex flexWrap="wrap" justify="center" gap="2" height="max-content">
+        <Text textAlign="center" fontWeight="extrabold" color="black">
           {pokemon.name.toUpperCase()}
         </Text>
-        <Text fontWeight="semibold" textAlign="center" color="#2b1906">
+        {/* <Text fontWeight="semibold" textAlign="center" color="#2b1906">
           {pokemon.weight + " Kg"}
-        </Text>
+        </Text> */}
       </Flex>
-      <Text fontWeight="semibold" textAlign="center" color="#2b1906">
-        {pokeType.join(" | ")}
-      </Text>
+      <Flex gap="3">
+        {pokeType.map((type) => (
+          <Tag
+            boxShadow="md"
+            textTransform="capitalize"
+            fontWeight="semibold"
+            textAlign="center"
+            color={setTagTextColor(type)}
+            bg={colors[type]}
+          >
+            {type}
+          </Tag>
+        ))}
+      </Flex>
     </Flex>
   );
 };
