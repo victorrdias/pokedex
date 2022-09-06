@@ -1,5 +1,5 @@
 import { StarIcon } from "@chakra-ui/icons";
-import { Box, Flex, IconButton, Text, Image } from "@chakra-ui/react";
+import { Flex, IconButton, Text, Image } from "@chakra-ui/react";
 import { PokeAPI } from "pokeapi-types";
 import React, { useContext } from "react";
 import { FavoriteContext } from "../contexts/FavoriteContext";
@@ -76,7 +76,7 @@ const PokedexCard: React.FC<{
         />
       </Flex>
 
-      <Flex direction="row" gap="4" height="max-content" padding="1">
+      <Flex direction="row" gap="2" height="max-content" padding="1">
         <Text textAlign="center" fontWeight="extrabold" color="#2b1906">
           {pokemon.name.toUpperCase()}
         </Text>
