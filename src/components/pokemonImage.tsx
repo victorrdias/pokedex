@@ -7,6 +7,7 @@ export const PokemonImage = ({ sprites, name, boxSize }) => {
       boxSize={boxSize}
       src={sprites.other && sprites.other.home.front_default}
       alt={name}
+      zIndex="5"
     />
   );
 };

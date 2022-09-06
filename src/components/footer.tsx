@@ -3,7 +3,7 @@ import React from "react";
 
 export const Footer = () => {
   return (
-    <Flex alignContent="center" height="10vh" bgColor="yellow.500">
+    <Flex alignContent="center" height="10vh">
       <Text>pezin de e-girl</Text>
     </Flex>
   );

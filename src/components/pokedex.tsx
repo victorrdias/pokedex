@@ -31,7 +31,7 @@ const Pokedex: React.FC<{
     pokemons && paginate(pokemons, pokemonsPerPage, page);
 
   return (
-    <Flex direction="column" px="5" alignItems="center" gap="4">
+    <Flex as="section" direction="column" px="5" alignItems="center" gap="4">
       <Flex>
         <Pagination
           totalPages={totalPages}
@@ -43,7 +43,13 @@ const Pokedex: React.FC<{
       {loading || !pokemons ? (
         <div>Carregando</div>
       ) : (
-        <Flex justifyContent="center" flexWrap="wrap" mt="5" gap={5}>
+        <Flex
+          as="article"
+          justifyContent="center"
+          flexWrap="wrap"
+          mt="5"
+          gap={5}
+        >
           {filteredPokemons &&
             filteredPokemons.map((pokemon, index) => {
               return (

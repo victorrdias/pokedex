@@ -1,8 +1,9 @@
 import { StarIcon } from "@chakra-ui/icons";
-import { Box, Flex, IconButton, Text } from "@chakra-ui/react";
+import { Box, Flex, IconButton, Text, Image } from "@chakra-ui/react";
 import { PokeAPI } from "pokeapi-types";
 import React, { useContext } from "react";
 import { FavoriteContext } from "../contexts/FavoriteContext";
+import { colors } from "../lib/pokemonColorsByType";
 
 import { PokemonImage } from "./pokemonImage";
 
@@ -26,42 +27,32 @@ const PokedexCard: React.FC<{
 
   const firstPokeType = pokeType[0];
 
-  const colors = {
-    fire: "radial-gradient(circle, rgba(184,77,0,1) 0%, rgba(240,128,48,1) 100%)",
-    water:
-      "radial-gradient(circle, rgba(32,98,255,1) 0%, rgba(104,144,240,1) 100%)",
-    grass: "#78C850",
-    normal: "#A8A878",
-    electric: "#F8D030",
-    ice: "#98D8D8",
-    ground: "#E0C068",
-    flying: "#A890F0",
-    ghost: "#705898",
-    rock: "#B8A038",
-    fighting: "#C03028",
-    poison: "#A040A0",
-    psychic: "#F85888",
-    bug: "#A8B820",
-    dark: "#705848",
-    steel: "#B8B8D0",
-    dragon: "#7038F8",
-    fairy: "#e3a3ff",
-  };
-
   const pokeColor = colors[firstPokeType];
 
   return (
-    <Box
+    <Flex
+      direction="column"
       boxShadow=" rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;"
       borderRadius="4"
       boxSize="12rem"
-      alignItems="center"
       bg={pokeColor}
       height="18rem"
-      alignContent="center"
       rounded="lg"
+      align="center"
+      justify="center"
+      zIndex={10}
     >
+      <Image
+        src="./assets/pokeball.png"
+        position="absolute"
+        opacity="0.04"
+        objectFit="cover"
+        height="15rem"
+        width="12rem"
+        filter="grayscale(100%)"
+      />
       <IconButton
+        alignSelf="flex-start"
         onClick={() =>
           isFavorite
             ? removePokemonFromFavorite()
@@ -85,18 +76,18 @@ const PokedexCard: React.FC<{
         />
       </Flex>
 
-      <Flex direction="column" height="max-content">
+      <Flex direction="row" gap="4" height="max-content" padding="1">
         <Text textAlign="center" fontWeight="extrabold" color="#2b1906">
-          {pokemon.name}
+          {pokemon.name.toUpperCase()}
         </Text>
         <Text fontWeight="semibold" textAlign="center" color="#2b1906">
           {pokemon.weight + " Kg"}
         </Text>
-        <Text fontWeight="semibold" textAlign="center" color="#2b1906">
-          {pokeType.join(" | ")}
-        </Text>
       </Flex>
-    </Box>
+      <Text fontWeight="semibold" textAlign="center" color="#2b1906">
+        {pokeType.join(" | ")}
+      </Text>
+    </Flex>
   );
 };
 

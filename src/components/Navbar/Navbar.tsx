@@ -7,14 +7,13 @@ const Navbar = () => {
   const logoImg =
     "https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png";
   return (
-    <Flex bgColor="yellow.600" height="10vh" justifyContent="center">
+    <Flex height="10vh" justifyContent="center">
       <Flex alignItems="center" alignContent="flex-start">
         <Button
           aria-label="home page"
-          bgColor="yellow.600"
-          _hover={{
-            bgColor: "yellow.200",
-          }}
+          bgColor="transparent"
+          color="white"
+          variant="ghost"
           onClick={() => {
             navigate("/home");
           }}

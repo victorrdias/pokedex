@@ -17,7 +17,7 @@ export const Pagination: React.FC<{
         icon={<ChevronLeftIcon />}
         onClick={onLeftClick}
       />
-      <Flex ml="2" mr="2" alignItems="center">
+      <Flex ml="2" mr="2" alignItems="center" color="white">
         {page} de {totalPages}
       </Flex>
       <IconButton
