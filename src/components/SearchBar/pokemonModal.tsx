@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  Button,
   Flex,
   Modal,
   ModalBody,
@@ -8,7 +7,6 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
-  useDisclosure,
   Box,
   ModalFooter,
   Spacer,
@@ -16,40 +14,34 @@ import {
 
 import { PokeAPI } from "pokeapi-types";
 import { PokemonImage } from "../pokemonImage";
+import { colors } from "../../lib/pokemonColorsByType";
 
-export const PokemonModal: React.FC<{ pokemon: PokeAPI.Pokemon }> = ({
-  pokemon,
-}) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+export const PokemonModal: React.FC<{
+  pokemon: PokeAPI.Pokemon;
+  isOpen: boolean;
+  onClose: () => void;
+}> = ({ pokemon, isOpen, onClose }) => {
+  if (pokemon === null) return null;
+
+  const pokeType = pokemon && pokemon.types.map((type) => type.type.name);
+
+  const firstPokeType = pokeType[0];
+
+  const pokeColor = colors[firstPokeType];
 
   return (
     <Flex>
-      <Button
-        color="#2b1906"
-        boxShadow="rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;"
-        onClick={onOpen}
-        bgColor="yellow.400"
-        _hover={{
-          bgColor: "yellow.500",
-        }}
-      >
-        Buscar
-      </Button>
       {pokemon ? (
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
-          <ModalContent
-            borderRadius="4px"
-            bgColor="yellow.500"
-            boxShadow="dark-lg"
-          >
+          <ModalContent borderRadius="4px" bg={pokeColor} boxShadow="dark-lg">
             <ModalHeader
               borderRadius="4"
-              bgColor="yellow.700"
+              bg={pokeColor}
               textAlign="center"
               fontWeight="bold"
               fontSize="xl"
-              textColor="yellow.500"
+              color="black"
             >
               {pokemon.name.toUpperCase()}
             </ModalHeader>
