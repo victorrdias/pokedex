@@ -1,7 +1,8 @@
-import { StarIcon } from "@chakra-ui/icons";
-import { Flex, IconButton, Text, Image, Tag } from "@chakra-ui/react";
+import { InfoOutlineIcon, StarIcon } from "@chakra-ui/icons";
+import { Flex, IconButton, Text, Image, Tag, Spacer } from "@chakra-ui/react";
 import { PokeAPI } from "pokeapi-types";
 import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { FavoriteContext } from "../contexts/FavoriteContext";
 import { colors } from "../lib/pokemonColorsByType";
 
@@ -29,16 +30,16 @@ const PokedexCard: React.FC<{
 
   const pokeColor = colors[firstPokeType];
 
+  let navigate = useNavigate();
+
   const setTagTextColor = (type: string) => {
     switch (type) {
       case "rock":
         return "#fff";
-
       case "fighting":
         return "#fff";
       case "poison":
         return "#fff";
-
       case "ghost":
         return "#fff";
       case "dragon":
@@ -73,23 +74,33 @@ const PokedexCard: React.FC<{
         width="12rem"
         filter="grayscale(100%)"
       />
-      <IconButton
-        alignSelf="flex-start"
-        onClick={() =>
-          isFavorite
-            ? removePokemonFromFavorite()
-            : addPokemonToFavorite(pokemon)
-        }
-        aria-label="favorite pokemons"
-        icon={<StarIcon />}
-        color={isFavorite ? "yellow.200" : "black"}
-        bgColor="transparent"
-        mb="-4"
-        _hover={{
-          color: "yellow.200",
-        }}
-      />
-
+      <Flex alignSelf="flex-start" gap="7rem">
+        <IconButton
+          onClick={() =>
+            isFavorite
+              ? removePokemonFromFavorite()
+              : addPokemonToFavorite(pokemon)
+          }
+          aria-label="favorite pokemons"
+          icon={<StarIcon />}
+          color={isFavorite ? "yellow.200" : "black"}
+          bgColor="transparent"
+          mb="-4"
+          _hover={{
+            color: "yellow.200",
+          }}
+        />
+        <IconButton
+          aria-label="pokemon-details"
+          onClick={() => navigate(`/pokemon/${pokemon.id}`)}
+          bgColor="transparent"
+          _hover={{
+            bgColor: "transparent",
+            color: "yellow.200",
+          }}
+          icon={<InfoOutlineIcon />}
+        />
+      </Flex>
       <PokemonImage
         boxSize="12rem"
         name={pokemon.name}

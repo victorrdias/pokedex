@@ -6,6 +6,7 @@ import HomePage from "./pages/homePage";
 import FavoritesPage from "./pages/favoritesPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import FavoriteProvider from "./contexts/FavoriteContext";
+import PokemonDetail from "./pages/PokemonDetail";
 
 function App() {
   return (
@@ -15,8 +16,8 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/home" element={<HomePage />} />
-
             <Route path="/favorites" element={<FavoritesPage />} />
+            <Route path="/pokemon/:id" element={<PokemonDetail />} />
           </Routes>
           <Footer />
         </Router>

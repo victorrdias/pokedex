@@ -1,7 +1,7 @@
 import { Flex, Image } from "@chakra-ui/react";
 import { PokeAPI } from "pokeapi-types";
 import React, { useEffect, useState } from "react";
-import { getPokemonData, getPokemons } from "../components/api";
+import { getPokemonDataByUrl, getPokemons } from "../components/api";
 
 import Pokedex from "../components/pokedex";
 import SearchBar from "../components/SearchBar/searchBar";
@@ -14,15 +14,16 @@ const HomePage = () => {
     try {
       const data = await getPokemons();
       const pokemons = data as PokeAPI.NamedAPIResource[];
+      console.log("pokepoke", pokemons);
       return pokemons;
     } catch (error) {
       console.log("fetchPokemons error: ", error);
     }
   };
 
-  const fetchPokemonData = async (url) => {
+  const fetchPokemonData = async (url: string) => {
     try {
-      const data = await getPokemonData(url);
+      const data = await getPokemonDataByUrl(url);
       const pokemonData = data as PokeAPI.Pokemon;
       return pokemonData;
     } catch (error) {

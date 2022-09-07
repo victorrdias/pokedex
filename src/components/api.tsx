@@ -28,12 +28,35 @@ export const getPokemons = async (
   }
 };
 
-export const getPokemonData = async (url): Promise<PokeAPI.Pokemon> => {
+export const getPokemonDataById = async (
+  id: string
+): Promise<PokeAPI.Pokemon> => {
   try {
-    const response = await fetch(url);
-    const data: PokeAPI.Pokemon = await response.json();
-    return data;
+    if (id) {
+      console.log("id", id);
+      const urlId = `https://pokeapi.co/api/v2/pokemon/${id}`;
+      const response = await fetch(urlId);
+      const data: PokeAPI.Pokemon = await response.json();
+      console.log("data", data);
+      return data;
+    }
   } catch (error) {
-    console.log("error: ", error);
+    console.error("error: ", error);
+  }
+};
+
+export const getPokemonDataByUrl = async (
+  url: string
+): Promise<PokeAPI.Pokemon> => {
+  try {
+    if (url) {
+      console.log("id", url);
+      const response = await fetch(url);
+      const data: PokeAPI.Pokemon = await response.json();
+      console.log("data", data);
+      return data;
+    }
+  } catch (error) {
+    console.error("error: ", error);
   }
 };
