@@ -89,7 +89,7 @@ const SearchBar = () => {
             bgColor: "#3665ff",
           }}
           onClick={() => {
-            navigate("/home");
+            navigate("/");
           }}
         >
           Home

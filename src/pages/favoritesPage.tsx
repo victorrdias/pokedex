@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { getPokemonDataByUrl, getPokemons } from "../components/api";
 import PokedexFavorites from "../components/pokedexFavorites";
 import SearchBar from "../components/SearchBar/searchBar";
+import PokemonDetail from "./PokemonDetail";
 
 const FavoritesPage = () => {
   const [loading, setLoading] = useState(true);
