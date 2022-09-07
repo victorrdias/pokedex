@@ -1,4 +1,4 @@
-import { Flex, Image, Tag, Text } from "@chakra-ui/react";
+import { Box, Flex, Image, Progress, Tag, Text } from "@chakra-ui/react";
 import { PokeAPI } from "pokeapi-types";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -87,6 +87,7 @@ const PokemonDetail: React.FC = () => {
         />
       </Flex>
       <Flex
+        textTransform="capitalize"
         direction="column"
         boxShadow=" rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;"
         boxSize="12rem"
@@ -103,20 +104,70 @@ const PokemonDetail: React.FC = () => {
         zIndex={1}
         gap="2"
       >
-        <Text color="white">name: {pokemon.name}</Text>
+        <Text
+          fontWeight="bold"
+          letterSpacing="wide"
+          textTransform="uppercase"
+          fontSize="xl"
+          color="white"
+        >
+          {" "}
+          {pokemon.name}
+        </Text>
+
         <Flex gap="2">
           {" "}
           {pokemon.types.map((type) => {
-            return <Tag bg={colors[type.type.name]}>{type.type.name}</Tag>;
+            return (
+              <Tag textTransform="capitalize" bg={colors[type.type.name]}>
+                {type.type.name}
+              </Tag>
+            );
           })}
         </Flex>
+
         <Text color="white">height: {pokemon.height}m</Text>
         <Text color="white">weight: {pokemon.weight}kg</Text>
-        <Text color="white">HP: {pokemon.stats[0].base_stat}</Text>
-        <Text color="white">attack: {pokemon.stats[1].base_stat}</Text>
-        <Text color="white">defense: {pokemon.stats[2].base_stat}</Text>
-        <Text color="white">special attack: {pokemon.stats[3].base_stat}</Text>
-        <Text color="white">special defense: {pokemon.stats[4].base_stat}</Text>
+
+        <Progress
+          rounded="full"
+          id="hp"
+          width="8rem"
+          colorScheme="red"
+          value={pokemon.stats[0].base_stat}
+        ></Progress>
+
+        <Progress
+          rounded="full"
+          id="attack"
+          width="8rem"
+          colorScheme="orange"
+          value={pokemon.stats[1].base_stat}
+        ></Progress>
+
+        <Progress
+          rounded="full"
+          id="defense"
+          width="8rem"
+          colorScheme="blue"
+          value={pokemon.stats[2].base_stat}
+        ></Progress>
+
+        <Progress
+          rounded="full"
+          id="speed"
+          width="8rem"
+          colorScheme="teal"
+          value={pokemon.stats[5].base_stat}
+        ></Progress>
+
+        <Progress
+          rounded="full"
+          id="experience"
+          width="8rem"
+          colorScheme="purple"
+          value={pokemon.base_experience}
+        ></Progress>
       </Flex>
     </Flex>
   );
