@@ -1,4 +1,4 @@
-import { Flex, Image } from "@chakra-ui/react";
+import { Flex, Image, Text } from "@chakra-ui/react";
 import { PokeAPI } from "pokeapi-types";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -42,6 +42,7 @@ const PokemonDetail: React.FC = () => {
         objectFit="cover"
         top="0"
       />
+      <Text color="white">{pokemon.name}</Text>
     </Flex>
   );
 };
