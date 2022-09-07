@@ -2,6 +2,7 @@ import { Flex, Image } from "@chakra-ui/react";
 import { PokeAPI } from "pokeapi-types";
 import React, { useEffect, useState } from "react";
 import { getPokemonData, getPokemons } from "../components/api";
+
 import Pokedex from "../components/pokedex";
 import SearchBar from "../components/SearchBar/searchBar";
 
@@ -49,13 +50,7 @@ const HomePage = () => {
   }, []);
 
   return (
-    <Flex
-      as="main"
-      direction="column"
-      //bgColor="yellow.500"
-      py="4"
-      height="100%"
-    >
+    <Flex as="main" direction="column" py="4" height="100%">
       <Image
         src="./assets/bgpokedex3.jpg"
         zIndex="-1"

@@ -13,9 +13,13 @@ export const Pagination: React.FC<{
       <IconButton
         aria-label="left"
         fontSize="3xl"
-        colorScheme="yellow"
+        bgColor="transparent"
+        color="white"
         icon={<ChevronLeftIcon />}
         onClick={onLeftClick}
+        _hover={{
+          bgColor: "#3665ff",
+        }}
       />
       <Flex ml="2" mr="2" alignItems="center" color="white">
         {page} de {totalPages}
@@ -23,7 +27,11 @@ export const Pagination: React.FC<{
       <IconButton
         aria-label="right"
         fontSize="3xl"
-        colorScheme="yellow"
+        bgColor="transparent"
+        color="white"
+        _hover={{
+          bgColor: "#3665ff",
+        }}
         icon={<ChevronRightIcon />}
         onClick={onRightClick}
       />

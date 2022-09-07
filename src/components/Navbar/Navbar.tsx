@@ -1,29 +1,19 @@
-import { Box, Button, Flex, Image } from "@chakra-ui/react";
+import { Box, Button, Flex, Image, Spacer } from "@chakra-ui/react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import SearchBar from "../SearchBar/searchBar";
 
 const Navbar = () => {
-  let navigate = useNavigate();
   const logoImg =
-    "https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png";
+    "https://img2.gratispng.com/20180715/sux/kisspng-computer-icons-insegna-font-pokeball-blue-5b4b065f84c9f3.5177187915316434875439.jpg";
   return (
-    <Flex height="10vh" justifyContent="center">
-      <Flex alignItems="center" alignContent="flex-start">
-        <Button
-          aria-label="home page"
-          bgColor="transparent"
-          color="white"
-          variant="ghost"
-          onClick={() => {
-            navigate("/home");
-          }}
-        >
-          Home
-        </Button>
-      </Flex>
+    <>
+      <Flex height="10vh" justifyContent="center">
+        <Image alt="pokeapi-logo" src={logoImg} className="navbar" />
 
-      <Image alt="pokeapi-logo" src={logoImg} className="navbar" />
-    </Flex>
+        <Flex justify="center" align="center"></Flex>
+      </Flex>
+    </>
   );
 };
 

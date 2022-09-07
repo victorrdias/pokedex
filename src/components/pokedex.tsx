@@ -12,12 +12,11 @@ const Pokedex: React.FC<{
   const [page, setPage] = useState(1);
   const pokemonsPerPage = 16;
   const totalPages = pokemons !== null && pokemons.length / pokemonsPerPage;
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const onLeftClick = () => {
     if (page > 1) setPage(page - 1);
   };
-
-  const [isFavorite, setIsFavorite] = useState(false);
 
   const onRightClick = () => {
     if (page < totalPages) setPage(page + 1);
@@ -32,7 +31,7 @@ const Pokedex: React.FC<{
 
   return (
     <Flex as="section" direction="column" px="5" alignItems="center" gap="4">
-      <Flex>
+      <Flex mb="-4">
         <Pagination
           totalPages={totalPages}
           page={page}

@@ -12,6 +12,7 @@ import { PokeAPI } from "pokeapi-types";
 
 import { searchPokemon } from "../api";
 import PokemonModal from "./pokemonModal";
+import Navbar from "../Navbar/Navbar";
 
 const SearchBar = () => {
   const [search, setSearch] = useState("");
@@ -41,45 +42,60 @@ const SearchBar = () => {
   }, [search]);
 
   return (
-    <Flex justifyContent="center" m="6" gap="4">
-      <Input
-        box-shadow="rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;"
-        bgColor="yellow.400"
-        textAlign="center"
-        textColor="yellow.900"
-        placeholder="Buscar pokemon"
-        _placeholder={{
-          color: "#2b1906",
-        }}
-        onChange={onChange}
-        width="12rem"
-        alignContent="center"
-      />
+    <>
+      <Flex justifyContent="center" mt="4" mb="2" gap="4">
+        <Input
+          box-shadow="rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;"
+          bgColor="#4873ff"
+          textAlign="center"
+          textColor="black"
+          placeholder="Buscar pokemon"
+          _placeholder={{
+            color: "black",
+          }}
+          onChange={onChange}
+          width="12rem"
+          alignContent="center"
+        />
 
-      <PokemonModal pokemon={pokemon} isOpen={isOpen} onClose={onClose} />
-      <Button
-        color="#2b1906"
-        boxShadow="rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;"
-        onClick={onOpen}
-        bgColor="yellow.400"
-        _hover={{
-          bgColor: "yellow.500",
-        }}
-      >
-        Buscar
-      </Button>
-      <IconButton
-        aria-label="Favorites page"
-        icon={<StarIcon />}
-        bgColor="yellow.400"
-        _hover={{
-          color: "yellow.200",
-        }}
-        onClick={() => {
-          navigate("/favorites");
-        }}
-      ></IconButton>
-    </Flex>
+        <PokemonModal pokemon={pokemon} isOpen={isOpen} onClose={onClose} />
+        <Button
+          color="black"
+          boxShadow="rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;"
+          onClick={onOpen}
+          bgColor="#4873ff"
+          _hover={{
+            bgColor: "#3665ff",
+          }}
+        >
+          Buscar
+        </Button>
+        <IconButton
+          aria-label="Favorites page"
+          icon={<StarIcon />}
+          bgColor="#4873ff"
+          _hover={{
+            color: "yellow.200",
+          }}
+          onClick={() => {
+            navigate("/favorites");
+          }}
+        ></IconButton>
+        <Button
+          aria-label="home page"
+          bgColor="#4873ff"
+          color="black"
+          _hover={{
+            bgColor: "#3665ff",
+          }}
+          onClick={() => {
+            navigate("/home");
+          }}
+        >
+          Home
+        </Button>
+      </Flex>
+    </>
   );
 };
 
