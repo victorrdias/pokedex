@@ -1,4 +1,4 @@
-import { Flex, Image, Text } from "@chakra-ui/react";
+import { Flex, Image, Tag, Text } from "@chakra-ui/react";
 import { PokeAPI } from "pokeapi-types";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -104,6 +104,12 @@ const PokemonDetail: React.FC = () => {
         gap="2"
       >
         <Text color="white">name: {pokemon.name}</Text>
+        <Flex gap="2">
+          {" "}
+          {pokemon.types.map((type) => {
+            return <Tag bg={colors[type.type.name]}>{type.type.name}</Tag>;
+          })}
+        </Flex>
         <Text color="white">height: {pokemon.height}m</Text>
         <Text color="white">weight: {pokemon.weight}kg</Text>
         <Text color="white">HP: {pokemon.stats[0].base_stat}</Text>

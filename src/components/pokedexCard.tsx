@@ -111,9 +111,6 @@ const PokedexCard: React.FC<{
         <Text textAlign="center" fontWeight="extrabold" color="black">
           {pokemon.name.toUpperCase()}
         </Text>
-        {/* <Text fontWeight="semibold" textAlign="center" color="#2b1906">
-          {pokemon.weight + " Kg"}
-        </Text> */}
       </Flex>
       <Flex gap="3">
         {pokeType.map((type) => (
