@@ -1,17 +1,15 @@
-import { Button, Flex, Image, Text } from "@chakra-ui/react";
+import { Flex, Image, Text } from "@chakra-ui/react";
 import { PokeAPI } from "pokeapi-types";
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getPokemonDataById } from "../components/api";
 import { PokemonImage } from "../components/pokemonImage";
-import SearchBar from "../components/SearchBar/searchBar";
+
 import { colors } from "../lib/pokemonColorsByType";
 
 const PokemonDetail: React.FC = () => {
   const params = useParams();
   const pokemonId = params.id;
-
-  let navigate = useNavigate();
 
   const [pokemon, setPokemon] = useState<PokeAPI.Pokemon>(null);
 
@@ -53,23 +51,11 @@ const PokemonDetail: React.FC = () => {
       direction="column"
       py="4"
       height="100%"
+      minH="90vh"
       width="100%"
       justifyContent="center"
       alignItems="center"
     >
-      <Button
-        aria-label="back"
-        bgColor="#4873ff"
-        color="black"
-        _hover={{
-          bgColor: "#3665ff",
-        }}
-        onClick={() => {
-          navigate("/");
-        }}
-      >
-        Voltar
-      </Button>
       <Image
         src="/assets/bgpokedex3.jpg"
         zIndex="-1"

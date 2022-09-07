@@ -35,8 +35,6 @@ const SearchBar = () => {
     }
   };
 
-  let navigate = useNavigate();
-
   useEffect(() => {
     onSearchHandler(search);
   }, [search]);
@@ -69,30 +67,6 @@ const SearchBar = () => {
           }}
         >
           Buscar
-        </Button>
-        <IconButton
-          aria-label="Favorites page"
-          icon={<StarIcon />}
-          bgColor="#4873ff"
-          _hover={{
-            color: "yellow.200",
-          }}
-          onClick={() => {
-            navigate("/favorites");
-          }}
-        ></IconButton>
-        <Button
-          aria-label="home page"
-          bgColor="#4873ff"
-          color="black"
-          _hover={{
-            bgColor: "#3665ff",
-          }}
-          onClick={() => {
-            navigate("/");
-          }}
-        >
-          Home
         </Button>
       </Flex>
     </>
