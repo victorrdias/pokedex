@@ -7,6 +7,7 @@ import FavoritesPage from "./pages/favoritesPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import FavoriteProvider from "./contexts/FavoriteContext";
 import PokemonDetail from "./pages/PokemonDetail";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 function App() {
   return (

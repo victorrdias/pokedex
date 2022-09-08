@@ -1,8 +1,18 @@
-import { Container, Flex, Image, Tag, Text } from "@chakra-ui/react";
+import { RepeatIcon, SunIcon } from "@chakra-ui/icons";
+import {
+  Button,
+  Container,
+  Flex,
+  IconButton,
+  Image,
+  Tag,
+  Text,
+} from "@chakra-ui/react";
 import { PokeAPI } from "pokeapi-types";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getPokemonDataById } from "../components/api";
+import PokemonDetailImage from "../components/pokemonDetailImage";
 import { PokemonImage } from "../components/pokemonImage";
 import PokemonStat from "../components/pokemonStat";
 import { colors } from "../lib/pokemonColorsByType";
@@ -56,7 +66,6 @@ const PokemonDetail: React.FC = () => {
       width="100%"
       justifyContent="center"
       alignItems="center"
-      paddingX="10"
     >
       <Image
         src="/assets/bgpokedex3.jpg"
@@ -69,8 +78,10 @@ const PokemonDetail: React.FC = () => {
       />
       <Container>
         <Flex
+          maxW={{ base: "100%", md: "xl" }}
+          maxH={{ base: "350px", md: "350px" }}
           direction="column"
-          // boxShadow=" rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;"
+          //boxShadow=" rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;"
           borderRadius="4"
           boxSize="12rem"
           bg={pokeColor}
@@ -82,12 +93,13 @@ const PokemonDetail: React.FC = () => {
           pb="4"
           gap="3"
         >
-          <PokemonImage
+          <PokemonDetailImage
             sprites={pokemon.sprites}
             name={pokemon.name}
-            boxSize="12rem"
+            boxSize="275px"
           />
         </Flex>
+
         <Flex
           textTransform="capitalize"
           direction="column"
@@ -98,7 +110,7 @@ const PokemonDetail: React.FC = () => {
           height="100%"
           width="100%"
           rounded="3xl"
-          paddingTop="20"
+          paddingTop="8"
           paddingBottom="10"
           paddingX="10"
           top="-10"
@@ -107,6 +119,28 @@ const PokemonDetail: React.FC = () => {
           justify="center"
           gap="2"
         >
+          <Flex
+            mb="-4"
+            gap={4}
+            position="relative"
+            left={{ base: "6rem", md: "11rem", lg: "11rem" }}
+            bottom="1rem"
+          >
+            <IconButton
+              color="black"
+              bgColor="gray"
+              aria-label="turnover pokemon"
+              icon={<RepeatIcon />}
+            ></IconButton>
+
+            <IconButton
+              color="black"
+              bgColor="gray"
+              aria-label="shiny pokemon"
+              icon={<SunIcon />}
+            ></IconButton>
+          </Flex>
+
           <Text
             fontWeight="bold"
             letterSpacing="wide"
@@ -124,7 +158,7 @@ const PokemonDetail: React.FC = () => {
                 <Tag
                   color={setTagTextColor(type.type.name)}
                   size="lg"
-                  px={8}
+                  px={{ base: 4, md: 8 }}
                   textTransform="capitalize"
                   bg={colors[type.type.name]}
                 >
