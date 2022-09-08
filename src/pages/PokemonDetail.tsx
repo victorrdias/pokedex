@@ -135,14 +135,22 @@ const PokemonDetail: React.FC = () => {
           </Flex>
 
           <Flex justify="space-between" w="100%" py="4">
-            <Flex align="center" direction="column" px="12">
+            <Flex
+              align="center"
+              direction="column"
+              px={{ base: "0", md: "12", lg: "12" }}
+            >
               <Text fontWeight="bold" fontSize="xl">
                 {pokemon.height}m
               </Text>
               <Text fontWeight="semibold">height</Text>
             </Flex>
 
-            <Flex align="center" direction="column" px="12">
+            <Flex
+              align="center"
+              direction="column"
+              px={{ base: "0", md: "4", lg: "4" }}
+            >
               <Text fontWeight="bold" fontSize="xl">
                 {pokemon.weight}kg
               </Text>
