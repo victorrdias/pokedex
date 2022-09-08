@@ -42,7 +42,7 @@ const PokemonStat: React.FC<{ stat: PokeAPI.PokemonStat }> = ({ stat }) => {
   };
 
   return (
-    <Flex alignItems="center" gap={1}>
+    <Flex alignItems="center" gap={3}>
       <Text minW="40px" fontWeight="semibold">
         {setStatNameInitials(stat.stat.name)}
       </Text>
@@ -53,6 +53,9 @@ const PokemonStat: React.FC<{ stat: PokeAPI.PokemonStat }> = ({ stat }) => {
         colorScheme={setStatColor(stat.stat.name)}
         value={(stat.base_stat * 100) / 255}
       ></Progress>
+      <Text textAlign="right" minW="60px" fontWeight="semibold">
+        {stat.base_stat}/255
+      </Text>
     </Flex>
   );
 };
