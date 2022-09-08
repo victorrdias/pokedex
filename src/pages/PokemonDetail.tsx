@@ -18,13 +18,17 @@ import PokemonStat from "../components/pokemonStat";
 import { colors } from "../lib/pokemonColorsByType";
 import { setTagTextColor } from "../lib/setTagTextColor";
 
-type PokemonPosition = "FRONT" | "BACK";
+type PokemonPosition =
+  | "FRONT_NORMAL"
+  | "BACK_NORMAL"
+  | "FRONT_SHINY"
+  | "BACK_SHINY";
 
 const PokemonDetail: React.FC = () => {
   const params = useParams();
   const pokemonId = params.id;
 
-  const [pokemonImg, setPokemonImg] = useState<PokemonPosition>("FRONT");
+  const [pokemonImg, setPokemonImg] = useState<PokemonPosition>("FRONT_NORMAL");
 
   const [pokemon, setPokemon] = useState<PokeAPI.Pokemon>(null);
 
@@ -47,8 +51,17 @@ const PokemonDetail: React.FC = () => {
   };
 
   const handleTurnOver = () => {
-    if (pokemonImg === "FRONT") setPokemonImg("BACK");
-    else setPokemonImg("FRONT");
+    if (pokemonImg === "FRONT_NORMAL") setPokemonImg("BACK_NORMAL");
+    if (pokemonImg === "FRONT_SHINY") setPokemonImg("BACK_SHINY");
+    if (pokemonImg === "BACK_NORMAL") setPokemonImg("FRONT_NORMAL");
+    if (pokemonImg === "BACK_SHINY") setPokemonImg("FRONT_SHINY");
+  };
+
+  const handleTurnShiny = () => {
+    if (pokemonImg === "FRONT_NORMAL") setPokemonImg("FRONT_SHINY");
+    if (pokemonImg === "FRONT_SHINY") setPokemonImg("FRONT_NORMAL");
+    if (pokemonImg === "BACK_NORMAL") setPokemonImg("BACK_SHINY");
+    if (pokemonImg === "BACK_SHINY") setPokemonImg("BACK_NORMAL");
   };
 
   useEffect(() => {
@@ -147,6 +160,9 @@ const PokemonDetail: React.FC = () => {
             ></IconButton>
 
             <IconButton
+              onClick={() => {
+                handleTurnShiny();
+              }}
               color="black"
               bgColor="gray"
               aria-label="shiny pokemon"
