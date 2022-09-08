@@ -1,4 +1,9 @@
-import { RepeatIcon, SunIcon } from "@chakra-ui/icons";
+import {
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  RepeatIcon,
+  SunIcon,
+} from "@chakra-ui/icons";
 import {
   Button,
   Container,
@@ -10,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 import { PokeAPI } from "pokeapi-types";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getPokemonDataById } from "../components/api";
 import PokemonDetailImage from "../components/pokemonDetailImage";
 import { PokemonImage } from "../components/pokemonImage";
@@ -32,6 +37,7 @@ const PokemonDetail: React.FC = () => {
 
   const [pokemon, setPokemon] = useState<PokeAPI.Pokemon>(null);
 
+  const navigate = useNavigate();
   const fetchPokemonData = async (id) => {
     try {
       const data = await getPokemonDataById(id);
@@ -142,34 +148,50 @@ const PokemonDetail: React.FC = () => {
           justify="center"
           gap="2"
         >
-          <Flex
-            mb="-4"
-            gap={4}
-            position="relative"
-            left={{ base: "6rem", sm: "11rem", md: "11rem", lg: "11rem" }}
-            bottom="1rem"
-          >
-            <IconButton
-              onClick={() => {
-                handleTurnOver();
-              }}
-              color="black"
-              bgColor="gray"
-              aria-label="turnover pokemon"
-              icon={<RepeatIcon />}
-            ></IconButton>
-
-            <IconButton
-              onClick={() => {
-                handleTurnShiny();
-              }}
-              color="black"
-              bgColor="gray"
-              aria-label="shiny pokemon"
-              icon={<SunIcon />}
-            ></IconButton>
+          <Flex w="100%" justify="space-between" gap={4}>
+            <Flex gap="4">
+              <IconButton
+                onClick={() => {
+                  if (pokemon.id > 1) navigate(`/pokemon/${pokemon.id - 1}`);
+                }}
+                fontSize="3xl"
+                bgColor="gray"
+                color="black"
+                aria-label="onLeftClick"
+                icon={<ChevronLeftIcon />}
+              ></IconButton>
+              <IconButton
+                onClick={() => {
+                  if (pokemon.id < 905) navigate(`/pokemon/${pokemon.id + 1}`);
+                }}
+                fontSize="3xl"
+                bgColor="gray"
+                color="black"
+                aria-label="onRightClick"
+                icon={<ChevronRightIcon />}
+              ></IconButton>
+            </Flex>
+            <Flex gap="4">
+              <IconButton
+                onClick={() => {
+                  handleTurnOver();
+                }}
+                color="black"
+                bgColor="gray"
+                aria-label="turnover pokemon"
+                icon={<RepeatIcon />}
+              ></IconButton>
+              <IconButton
+                onClick={() => {
+                  handleTurnShiny();
+                }}
+                color="black"
+                bgColor="gray"
+                aria-label="shiny pokemon"
+                icon={<SunIcon />}
+              ></IconButton>
+            </Flex>
           </Flex>
-
           <Text
             fontWeight="bold"
             letterSpacing="wide"
