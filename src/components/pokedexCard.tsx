@@ -5,6 +5,7 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { FavoriteContext } from "../contexts/FavoriteContext";
 import { colors } from "../lib/pokemonColorsByType";
+import { setTagTextColor } from "../lib/setTagTextColor";
 
 import { PokemonImage } from "./pokemonImage";
 
@@ -32,24 +33,6 @@ const PokedexCard: React.FC<{
 
   let navigate = useNavigate();
 
-  const setTagTextColor = (type: string) => {
-    switch (type) {
-      case "rock":
-        return "#fff";
-      case "fighting":
-        return "#fff";
-      case "poison":
-        return "#fff";
-      case "ghost":
-        return "#fff";
-      case "dragon":
-        return "#fff";
-      case "flying":
-        return "#fff";
-      default:
-        return "black";
-    }
-  };
   return (
     <Flex
       direction="column"

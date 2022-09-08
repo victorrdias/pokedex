@@ -1,11 +1,12 @@
-import { Box, Flex, Image, Progress, Tag, Text } from "@chakra-ui/react";
+import { Container, Flex, Image, Tag, Text } from "@chakra-ui/react";
 import { PokeAPI } from "pokeapi-types";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getPokemonDataById } from "../components/api";
 import { PokemonImage } from "../components/pokemonImage";
-
+import PokemonStat from "../components/pokemonStat";
 import { colors } from "../lib/pokemonColorsByType";
+import { setTagTextColor } from "../lib/setTagTextColor";
 
 const PokemonDetail: React.FC = () => {
   const params = useParams();
@@ -55,6 +56,7 @@ const PokemonDetail: React.FC = () => {
       width="100%"
       justifyContent="center"
       alignItems="center"
+      paddingX="10"
     >
       <Image
         src="/assets/bgpokedex3.jpg"
@@ -65,110 +67,96 @@ const PokemonDetail: React.FC = () => {
         objectFit="cover"
         top="0"
       />
-      <Flex
-        direction="column"
-        // boxShadow=" rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;"
-        borderRadius="4"
-        boxSize="12rem"
-        bg={pokeColor}
-        height="70%"
-        width="70%"
-        rounded="3xl"
-        align="center"
-        justify="center"
-        zIndex={2}
-        pb="4"
-        gap="3"
-      >
-        <PokemonImage
-          sprites={pokemon.sprites}
-          name={pokemon.name}
+      <Container>
+        <Flex
+          direction="column"
+          // boxShadow=" rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;"
+          borderRadius="4"
           boxSize="12rem"
-        />
-      </Flex>
-      <Flex
-        textTransform="capitalize"
-        direction="column"
-        boxShadow=" rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;"
-        boxSize="12rem"
-        bg="grey"
-        height="70%"
-        width="70%"
-        rounded="3xl"
-        paddingTop="20"
-        paddingBottom="10"
-        top="-10"
-        position="relative"
-        align="center"
-        justify="center"
-        zIndex={1}
-        gap="2"
-      >
-        <Text
-          fontWeight="bold"
-          letterSpacing="wide"
-          textTransform="uppercase"
-          fontSize="xl"
-          color="white"
+          bg={pokeColor}
+          height="100%"
+          width="100%"
+          rounded="3xl"
+          align="center"
+          justify="center"
+          pb="4"
+          gap="3"
         >
-          {" "}
-          {pokemon.name}
-        </Text>
-
-        <Flex gap="2">
-          {" "}
-          {pokemon.types.map((type) => {
-            return (
-              <Tag textTransform="capitalize" bg={colors[type.type.name]}>
-                {type.type.name}
-              </Tag>
-            );
-          })}
+          <PokemonImage
+            sprites={pokemon.sprites}
+            name={pokemon.name}
+            boxSize="12rem"
+          />
         </Flex>
+        <Flex
+          textTransform="capitalize"
+          direction="column"
+          boxShadow=" rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;"
+          boxSize="12rem"
+          bg="#2b292c"
+          color="white"
+          height="100%"
+          width="100%"
+          rounded="3xl"
+          paddingTop="20"
+          paddingBottom="10"
+          paddingX="10"
+          top="-10"
+          position="relative"
+          align="center"
+          justify="center"
+          gap="2"
+        >
+          <Text
+            fontWeight="bold"
+            letterSpacing="wide"
+            textTransform="uppercase"
+            fontSize="xl"
+          >
+            {" "}
+            {pokemon.name}
+          </Text>
 
-        <Text color="white">height: {pokemon.height}m</Text>
-        <Text color="white">weight: {pokemon.weight}kg</Text>
+          <Flex gap="6">
+            {" "}
+            {pokemon.types.map((type) => {
+              return (
+                <Tag
+                  color={setTagTextColor(type.type.name)}
+                  size="lg"
+                  px={8}
+                  textTransform="capitalize"
+                  bg={colors[type.type.name]}
+                >
+                  {type.type.name}
+                </Tag>
+              );
+            })}
+          </Flex>
 
-        <Progress
-          rounded="full"
-          id="hp"
-          width="8rem"
-          colorScheme="red"
-          value={pokemon.stats[0].base_stat}
-        ></Progress>
+          <Flex justify="space-between" w="100%" py="4">
+            <Flex align="center" direction="column" px="12">
+              <Text fontWeight="bold" fontSize="xl">
+                {pokemon.height}m
+              </Text>
+              <Text fontWeight="semibold">height</Text>
+            </Flex>
 
-        <Progress
-          rounded="full"
-          id="attack"
-          width="8rem"
-          colorScheme="orange"
-          value={pokemon.stats[1].base_stat}
-        ></Progress>
+            <Flex align="center" direction="column" px="12">
+              <Text fontWeight="bold" fontSize="xl">
+                {pokemon.weight}kg
+              </Text>
+              <Text fontWeight="semibold">weight</Text>
+            </Flex>
+          </Flex>
 
-        <Progress
-          rounded="full"
-          id="defense"
-          width="8rem"
-          colorScheme="blue"
-          value={pokemon.stats[2].base_stat}
-        ></Progress>
-
-        <Progress
-          rounded="full"
-          id="speed"
-          width="8rem"
-          colorScheme="teal"
-          value={pokemon.stats[5].base_stat}
-        ></Progress>
-
-        <Progress
-          rounded="full"
-          id="experience"
-          width="8rem"
-          colorScheme="purple"
-          value={pokemon.base_experience}
-        ></Progress>
-      </Flex>
+          <Flex as="section" direction="column" w="100%" gap={"1.5"}>
+            {pokemon.stats.map((stat) => {
+              return <PokemonStat stat={stat} />;
+            })}
+          </Flex>
+        </Flex>
+      </Container>
     </Flex>
   );
 };
