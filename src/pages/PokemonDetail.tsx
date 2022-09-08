@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -12,9 +13,9 @@ import {
   Image,
   Tag,
   Text,
+  Tooltip,
 } from "@chakra-ui/react";
 import { PokeAPI } from "pokeapi-types";
-import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getPokemonDataById } from "../components/api";
 import PokemonDetailImage from "../components/pokemonDetailImage";
@@ -171,26 +172,35 @@ const PokemonDetail: React.FC = () => {
                 icon={<ChevronRightIcon />}
               ></IconButton>
             </Flex>
-            <Flex gap="4">
-              <IconButton
-                onClick={() => {
-                  handleTurnOver();
-                }}
-                color="black"
-                bgColor="gray"
-                aria-label="turnover pokemon"
-                icon={<RepeatIcon />}
-              ></IconButton>
-              <IconButton
-                onClick={() => {
-                  handleTurnShiny();
-                }}
-                color="black"
-                bgColor="gray"
-                aria-label="shiny pokemon"
-                icon={<SunIcon />}
-              ></IconButton>
-            </Flex>
+
+            <Tooltip
+              hasArrow
+              label="Usable on 3rd image"
+              closeOnClick={false}
+              closeDelay={3000}
+              bg="red.600"
+            >
+              <Flex gap="4">
+                <IconButton
+                  onClick={() => {
+                    handleTurnOver();
+                  }}
+                  color="black"
+                  bgColor="gray"
+                  aria-label="turnover pokemon"
+                  icon={<RepeatIcon />}
+                ></IconButton>
+                <IconButton
+                  onClick={() => {
+                    handleTurnShiny();
+                  }}
+                  color="black"
+                  bgColor="gray"
+                  aria-label="shiny pokemon"
+                  icon={<SunIcon />}
+                ></IconButton>
+              </Flex>
+            </Tooltip>
           </Flex>
           <Text
             fontWeight="bold"
