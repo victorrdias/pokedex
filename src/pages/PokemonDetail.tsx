@@ -18,9 +18,13 @@ import PokemonStat from "../components/pokemonStat";
 import { colors } from "../lib/pokemonColorsByType";
 import { setTagTextColor } from "../lib/setTagTextColor";
 
+type PokemonPosition = "FRONT" | "BACK";
+
 const PokemonDetail: React.FC = () => {
   const params = useParams();
   const pokemonId = params.id;
+
+  const [pokemonImg, setPokemonImg] = useState<PokemonPosition>("FRONT");
 
   const [pokemon, setPokemon] = useState<PokeAPI.Pokemon>(null);
 
@@ -40,6 +44,11 @@ const PokemonDetail: React.FC = () => {
       const pokeData = await fetchPokemonData(id);
       setPokemon(pokeData);
     }
+  };
+
+  const handleTurnOver = () => {
+    if (pokemonImg === "FRONT") setPokemonImg("BACK");
+    else setPokemonImg("FRONT");
   };
 
   useEffect(() => {
@@ -97,6 +106,7 @@ const PokemonDetail: React.FC = () => {
             sprites={pokemon.sprites}
             name={pokemon.name}
             boxSize="275px"
+            pokemonImg={pokemonImg}
           />
         </Flex>
 
@@ -123,10 +133,13 @@ const PokemonDetail: React.FC = () => {
             mb="-4"
             gap={4}
             position="relative"
-            left={{ base: "6rem", md: "11rem", lg: "11rem" }}
+            left={{ base: "6rem", sm: "11rem", md: "11rem", lg: "11rem" }}
             bottom="1rem"
           >
             <IconButton
+              onClick={() => {
+                handleTurnOver();
+              }}
               color="black"
               bgColor="gray"
               aria-label="turnover pokemon"
