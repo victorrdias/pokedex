@@ -51,7 +51,7 @@ const PokemonStat: React.FC<{ stat: PokeAPI.PokemonStat }> = ({ stat }) => {
         width="100%"
         rounded="full"
         colorScheme={setStatColor(stat.stat.name)}
-        value={stat.base_stat}
+        value={(stat.base_stat * 100) / 255}
       ></Progress>
     </Flex>
   );
