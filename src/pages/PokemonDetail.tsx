@@ -149,7 +149,7 @@ const PokemonDetail: React.FC = () => {
           justify="center"
           gap="2"
         >
-          <Flex w="100%" justify="space-between" gap={4}>
+          <Flex w="100%" justify="space-between" alignItems="center" gap={4}>
             <Flex gap="4">
               <IconButton
                 onClick={() => {
@@ -172,7 +172,9 @@ const PokemonDetail: React.FC = () => {
                 icon={<ChevronRightIcon />}
               ></IconButton>
             </Flex>
-
+            <Text fontSize={{ base: "md", sm: "xl" }} fontWeight="semibold">
+              #{pokemon.id}
+            </Text>
             <Tooltip
               hasArrow
               label="Usable on 3rd image"
