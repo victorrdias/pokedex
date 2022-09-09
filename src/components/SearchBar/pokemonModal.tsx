@@ -13,7 +13,7 @@ import {
 } from "@chakra-ui/react";
 
 import { PokeAPI } from "pokeapi-types";
-import { PokemonImage } from "../pokemonImage";
+import { PokemonImage } from "../pokemonDetails/pokemonImage";
 import { colors } from "../../lib/pokemonColorsByType";
 
 export const PokemonModal: React.FC<{

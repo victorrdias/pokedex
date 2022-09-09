@@ -1,5 +1,5 @@
 import { InfoOutlineIcon, StarIcon } from "@chakra-ui/icons";
-import { Flex, IconButton, Text, Image, Tag, Spacer } from "@chakra-ui/react";
+import { Flex, IconButton, Text, Image, Tag } from "@chakra-ui/react";
 import { PokeAPI } from "pokeapi-types";
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
@@ -7,7 +7,7 @@ import { FavoriteContext } from "../contexts/FavoriteContext";
 import { colors } from "../lib/pokemonColorsByType";
 import { setTagTextColor } from "../lib/setTagTextColor";
 
-import { PokemonImage } from "./pokemonImage";
+import { PokemonImage } from "./pokemonDetails/pokemonImage";
 
 const PokedexCard: React.FC<{
   pokemon: PokeAPI.Pokemon;
