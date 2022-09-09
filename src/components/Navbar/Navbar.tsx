@@ -6,22 +6,21 @@ import { useNavigate } from "react-router-dom";
 const Navbar: React.FC = () => {
   let navigate = useNavigate();
 
-  const logoImg =
-    "https://img2.gratispng.com/20180715/sux/kisspng-computer-icons-insegna-font-pokeball-blue-5b4b065f84c9f3.5177187915316434875439.jpg";
+  const logoImg = "https://img.icons8.com/plasticine/344/squirtle.png";
   return (
     <>
       <Flex as="header" height="10vh" width="100%" justifyContent="center">
         <Flex
           as="nav"
           flexGrow="1"
-          paddingX={{ base: "7", md: "14" }}
+          paddingX={{ base: "7", md: "28" }}
           justify="flex-start"
           align="center"
           gap="4"
         >
           <Button
             aria-label="home page"
-            width={{ base: "6rem" }}
+            width={{ base: "6rem", md: "7rem" }}
             leftIcon={<AiFillHome />}
             bgColor="#4873ff"
             color="black"
@@ -36,7 +35,7 @@ const Navbar: React.FC = () => {
           </Button>
 
           <Button
-            width={{ base: "7rem" }}
+            width={{ base: "7rem", md: "9rem" }}
             aria-label="Favorites page"
             leftIcon={<AiFillStar />}
             bgColor="#4873ff"
