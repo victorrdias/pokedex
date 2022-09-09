@@ -1,18 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { StarIcon } from "@chakra-ui/icons";
-import {
-  Button,
-  Flex,
-  IconButton,
-  Input,
-  useDisclosure,
-} from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
+import { Button, Flex, Input, useDisclosure } from "@chakra-ui/react";
 import { PokeAPI } from "pokeapi-types";
-
 import { searchPokemon } from "../api";
 import PokemonModal from "./pokemonModal";
-import Navbar from "../Navbar/Navbar";
 
 const SearchBar = () => {
   const [search, setSearch] = useState("");

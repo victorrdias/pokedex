@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Flex } from "@chakra-ui/react";
-import FetchPokemons from "../components/FetchPokemons/FetchPokemons";
+import Pokedex from "../components/pokedex";
+import SearchBar from "../components/SearchBar/searchBar";
+import { PokemonContext } from "../contexts/PokemonContext";
 
 const HomePage = () => {
+  const { pokemons, loading } = useContext(PokemonContext);
   return (
     <Flex as="main" direction="column" py="4" height="100%">
-      <FetchPokemons />
+      <SearchBar />
+      <Pokedex pokemons={pokemons} loading={loading} />
     </Flex>
   );
 };

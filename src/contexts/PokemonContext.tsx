@@ -1,11 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { Flex } from "@chakra-ui/react";
 import { PokeAPI } from "pokeapi-types";
-import { getPokemonDataByUrl, getPokemons } from "../api";
-import Pokedex from "../pokedex";
-import SearchBar from "../SearchBar/searchBar";
+import { getPokemonDataByUrl, getPokemons } from "../components/api";
 
-const FetchPokemons = () => {
+interface PokemonContextProps {
+  pokemons: PokeAPI.Pokemon[];
+  setPokemons: React.Dispatch<React.SetStateAction<PokeAPI.Pokemon[]>>;
+  loading: boolean;
+}
+
+export const PokemonContext = React.createContext<PokemonContextProps>({
+  pokemons: [],
+  setPokemons: () => console.warn("setFavorites is not ready"),
+  loading: true,
+});
+
+const PokemonProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [loading, setLoading] = useState(true);
   const [pokemons, setPokemons] = useState<PokeAPI.Pokemon[] | null>(null);
 
@@ -48,13 +59,16 @@ const FetchPokemons = () => {
   useEffect(() => {
     handleFetchData();
   }, []);
-
   return (
-    <Flex as="main" direction="column" py="4" height="100%">
-      <SearchBar />
-      <Pokedex pokemons={pokemons} loading={loading} />
-    </Flex>
+    <PokemonContext.Provider
+      value={{
+        pokemons,
+        setPokemons,
+        loading,
+      }}
+    >
+      {children}
+    </PokemonContext.Provider>
   );
 };
-
-export default FetchPokemons;
+export default PokemonProvider;
