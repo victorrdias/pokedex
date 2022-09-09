@@ -1,4 +1,4 @@
-import { Flex } from "@chakra-ui/react";
+import { Center, Flex, Spinner } from "@chakra-ui/react";
 import { PokeAPI } from "pokeapi-types";
 import React, { useState } from "react";
 
@@ -40,7 +40,9 @@ const Pokedex: React.FC<{
         />
       </Flex>
       {loading || !pokemons ? (
-        <div>Carregando</div>
+        <Center minH="50vh">
+          <Spinner thickness="5px" size="xl" color="white" />
+        </Center>
       ) : (
         <Flex
           as="article"

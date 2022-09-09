@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { FavoriteContext } from "../contexts/FavoriteContext";
 import { colors } from "../lib/pokemonColorsByType";
 import { setTagTextColor } from "../lib/setTagTextColor";
+import { tagColors } from "../lib/tagColors";
 
 import { PokemonImage } from "./pokemonDetails/pokemonImage";
 
@@ -102,8 +103,8 @@ const PokedexCard: React.FC<{
             textTransform="capitalize"
             fontWeight="semibold"
             textAlign="center"
-            color={setTagTextColor(type)}
-            bg={colors[type]}
+            color="white"
+            bg={tagColors[type]}
           >
             {type}
           </Tag>

@@ -1,4 +1,4 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex, Spinner } from "@chakra-ui/react";
 import React, { useContext } from "react";
 import PokedexFavorites from "../components/pokedexFavorites";
 import SearchBar from "../components/SearchBar/searchBar";
@@ -12,7 +12,7 @@ const FavoritesPage = () => {
     <Flex as="main" direction="column" py="4" height="100%">
       <SearchBar />
       {loading || !favorites ? (
-        <div>Carregando</div>
+        <Spinner />
       ) : (
         <PokedexFavorites loading={loading} />
       )}
