@@ -4,7 +4,7 @@ import FetchFavoritePokemons from "../components/FetchPokemons/FetchFavoritePoke
 
 const FavoritesPage = () => {
   return (
-    <Flex>
+    <Flex as="main" direction="column" py="4" height="100%">
       <FetchFavoritePokemons />;
     </Flex>
   );
