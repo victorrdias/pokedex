@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "./components/Navbar/Navbar";
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, Image } from "@chakra-ui/react";
 import Footer from "./components/footer";
 import HomePage from "./pages/homePage";
 import FavoritesPage from "./pages/favoritesPage";
@@ -14,6 +14,15 @@ function App() {
     <ChakraProvider>
       <FavoriteProvider>
         <Router>
+          <Image
+            src="./assets/bgpokedex3.jpg"
+            zIndex="-1"
+            position="absolute"
+            minW="100%"
+            minH="100%"
+            objectFit="cover"
+            top="0"
+          />
           <Navbar />
           <Routes>
             <Route path="/" element={<HomePage />} />

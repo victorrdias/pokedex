@@ -1,12 +1,11 @@
-import { Flex, Image } from "@chakra-ui/react";
-import { PokeAPI } from "pokeapi-types";
 import React, { useEffect, useState } from "react";
-import { getPokemonDataByUrl, getPokemons } from "../components/api";
-import PokedexFavorites from "../components/pokedexFavorites";
-import SearchBar from "../components/SearchBar/searchBar";
-import PokemonDetail from "./PokemonDetail";
+import { Flex } from "@chakra-ui/react";
+import { PokeAPI } from "pokeapi-types";
+import { getPokemonDataByUrl, getPokemons } from "../api";
+import Pokedex from "../pokedex";
+import SearchBar from "../SearchBar/searchBar";
 
-const FavoritesPage = () => {
+const FetchPokemons = () => {
   const [loading, setLoading] = useState(true);
   const [pokemons, setPokemons] = useState<PokeAPI.Pokemon[] | null>(null);
 
@@ -14,18 +13,21 @@ const FavoritesPage = () => {
     try {
       const data = await getPokemons();
       const pokemons = data as PokeAPI.NamedAPIResource[];
+      console.log("pokepoke", pokemons);
       return pokemons;
     } catch (error) {
       console.log("fetchPokemons error: ", error);
     }
   };
 
-  const fetchPokemonData = async (url) => {
+  const fetchPokemonData = async (url: string) => {
     try {
       const data = await getPokemonDataByUrl(url);
       const pokemonData = data as PokeAPI.Pokemon;
       return pokemonData;
-    } catch (error) {}
+    } catch (error) {
+      console.log("fetchPokemonsData error: ", error);
+    }
   };
 
   const handleFetchData = async () => {
@@ -50,10 +52,9 @@ const FavoritesPage = () => {
   return (
     <Flex as="main" direction="column" py="4" height="100%">
       <SearchBar />
-
-      <PokedexFavorites loading={loading} />
+      <Pokedex pokemons={pokemons} loading={loading} />
     </Flex>
   );
 };
 
-export default FavoritesPage;
+export default FetchPokemons;
