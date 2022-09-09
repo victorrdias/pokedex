@@ -64,7 +64,3 @@ const SearchBar = () => {
 };
 
 export default SearchBar;
-
-/**
- * @todo colocar um onClick para o botao mostrar o pokemon de costas
- */

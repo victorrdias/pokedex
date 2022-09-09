@@ -21,7 +21,8 @@ function App() {
               zIndex="-1"
               position="absolute"
               minW="100%"
-              minH="100%"
+              h="100%"
+              minH="100vh"
               objectFit="cover"
               top="0"
             />
