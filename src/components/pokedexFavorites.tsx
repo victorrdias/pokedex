@@ -1,11 +1,10 @@
 import { Flex } from "@chakra-ui/react";
 import { PokeAPI } from "pokeapi-types";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { FavoriteContext } from "../contexts/FavoriteContext";
 
 import Pagination from "./pagination";
 import PokedexCard from "./pokedexCard";
-import Pokemon from "./pokedexCard";
 
 const PokedexFavorites: React.FC<{
   loading: boolean;
@@ -29,19 +28,6 @@ const PokedexFavorites: React.FC<{
     return array.slice((number - 1) * size, number * size);
   };
 
-  // const favoritesHandler = (name: string) => {
-  //   try {
-  //     const isFavorite = favorites.some((favorite) => favorite.name === name);
-  //     setIsFavorite(!isFavorite);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   favoritesHandler(Pokemon.name);
-  // }, []);
-
   const filteredPokemons =
     favorites && paginate(favorites, pokemonsPerPage, page);
 
@@ -59,23 +45,11 @@ const PokedexFavorites: React.FC<{
         <div>Carregando</div>
       ) : (
         <Flex justifyContent="center" flexWrap="wrap" mt="5" gap={5}>
-          {favorites?.map((Pokemon) => (
+          {filteredPokemons.map((Pokemon) => (
             <Flex key={Pokemon.name}>
               <PokedexCard pokemon={Pokemon} isFavorite={isFavorite} />
             </Flex>
           ))}
-
-          {/* {filteredPokemons &&
-            filteredPokemons.map((pokemon, index) => {
-              favoritesHandler(pokemon.name);
-              return (
-                <Pokemon
-                  key={index}
-                  pokemon={pokemon}
-                  isFavorite={isFavorite}
-                />
-              );
-            })} */}
         </Flex>
       )}
     </Flex>
