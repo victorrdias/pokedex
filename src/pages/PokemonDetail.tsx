@@ -197,7 +197,7 @@ const PokemonDetail: React.FC = () => {
                     handleTurnShiny();
                   }}
                   color="black"
-                  bgColor={pokemonImg.includes("SHINY") ? "yellow.300" : "gray"}
+                  bgColor={pokemonImg.includes("SHINY") ? "white" : "gray"}
                   aria-label="shiny pokemon"
                   icon={<SunIcon />}
                 ></IconButton>

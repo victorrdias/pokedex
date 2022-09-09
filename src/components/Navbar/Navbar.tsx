@@ -14,13 +14,14 @@ const Navbar: React.FC = () => {
         <Flex
           as="nav"
           flexGrow="1"
-          paddingX="14"
+          paddingX={{ base: "7", md: "14" }}
           justify="flex-start"
           align="center"
           gap="4"
         >
           <Button
             aria-label="home page"
+            width={{ base: "6rem" }}
             leftIcon={<AiFillHome />}
             bgColor="#4873ff"
             color="black"
@@ -35,6 +36,7 @@ const Navbar: React.FC = () => {
           </Button>
 
           <Button
+            width={{ base: "7rem" }}
             aria-label="Favorites page"
             leftIcon={<AiFillStar />}
             bgColor="#4873ff"
