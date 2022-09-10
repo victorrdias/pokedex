@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Flex } from "@chakra-ui/react";
+import { Container, Flex } from "@chakra-ui/react";
 import Pokedex from "../components/pokedex";
 import SearchBar from "../components/SearchBar/searchBar";
 import { PokemonContext } from "../contexts/PokemonContext";
@@ -9,6 +9,7 @@ const HomePage = () => {
   return (
     <Flex as="main" direction="column" py="4" height="100%">
       <SearchBar />
+
       <Pokedex pokemons={pokemons} loading={loading} />
     </Flex>
   );

@@ -3,7 +3,7 @@ import { PokeAPI } from "pokeapi-types";
 import React, { useContext, useState } from "react";
 import { FavoriteContext } from "../contexts/FavoriteContext";
 
-import Pagination from "./pagination";
+import Pagination from "./SearchBar/pagination";
 import PokedexCard from "./pokedexCard";
 
 const PokedexFavorites: React.FC<{
