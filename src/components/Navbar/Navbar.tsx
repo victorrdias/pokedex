@@ -1,13 +1,13 @@
 import { AiFillHome, AiFillStar } from "react-icons/ai";
-import { Button, Flex, Image, Text } from "@chakra-ui/react";
+import { Button, Flex, Image, Spacer, Text } from "@chakra-ui/react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const Navbar: React.FC = () => {
   let navigate = useNavigate();
 
-  // const logoImg = "https://img.icons8.com/plasticine/344/squirtle.png";
-  // const logoImg = "./assets/pokedexheader.png";
+  const logoImg = "https://img.icons8.com/plasticine/344/squirtle.png";
+
   return (
     <>
       <Flex
@@ -16,12 +16,30 @@ const Navbar: React.FC = () => {
         width="100%"
         justifyContent="center"
         bgColor="transparent"
-        paddingX={{ base: "7", md: "7" }}
+        paddingX={{ base: "5", md: "7" }}
       >
-        <Flex flexGrow="1" fontSize="3xl" fontWeight="semibold" align="center">
-          {/* <Image alt="pokeapi-logo" src={logoImg} className="navbar" /> */}
-          <Text color="white">pokedex</Text>
+        <Flex flexGrow="1" align="center" boxSize="6rem">
+          <Image
+            boxSize="6rem"
+            alt="pokeapi-logo"
+            src={logoImg}
+            className="navbar"
+          />
+
+          <Flex>
+            <Text
+              fontWeight="bold"
+              ml="4"
+              display={{ base: "block", md: "initial" }}
+              color={{ base: "#1c246d", md: "white" }}
+              fontSize="3xl"
+              align="center"
+            >
+              POKEDEX
+            </Text>
+          </Flex>
         </Flex>
+
         <Flex as="nav" justify="flex-end" align="center" gap="4">
           <Button
             aria-label="home page"

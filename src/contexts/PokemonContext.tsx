@@ -24,7 +24,6 @@ const PokemonProvider: React.FC<{ children: React.ReactNode }> = ({
     try {
       const data = await getPokemons();
       const pokemons = data as PokeAPI.NamedAPIResource[];
-      console.log("pokepoke", pokemons);
       return pokemons;
     } catch (error) {
       console.log("fetchPokemons error: ", error);

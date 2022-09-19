@@ -3,7 +3,6 @@ import { Button, Flex, Input, useDisclosure } from "@chakra-ui/react";
 import { PokeAPI } from "pokeapi-types";
 import { searchPokemon } from "../api";
 import PokemonModal from "./pokemonModal";
-import Pagination from "./pagination";
 
 const SearchBar = () => {
   const [search, setSearch] = useState("");
