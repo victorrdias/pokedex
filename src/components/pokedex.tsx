@@ -1,7 +1,6 @@
 import { Center, Flex, Spinner } from "@chakra-ui/react";
 import { PokeAPI } from "pokeapi-types";
 import React, { useState } from "react";
-
 import Pagination from "./SearchBar/pagination";
 import Pokemon from "./pokedexCard";
 

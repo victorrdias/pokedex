@@ -50,9 +50,9 @@ export const Footer = () => {
         gap="2"
         align={{ base: "flex-start", md: "center", lg: "center" }}
       >
-        <Text fontSize="sm" color="white">
-          &copy; {new Date().getFullYear()} Vitor Dias. Todos os direitos
-          reservados.
+        <Text fontSize={{ base: "xs", md: "md" }} color="white">
+          &copy; {new Date().getFullYear()} Vitor Dias & Pedro Ferrari. Todos os
+          direitos reservados.
         </Text>
       </Flex>
     </Flex>
